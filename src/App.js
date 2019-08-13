@@ -1,5 +1,5 @@
 //TODO: STEP 1 - Import the useState hook.
-import React ,{useState,useEffect}from "react";
+import React ,{useState} from "react";
 import "./App.css";
 import BottomRow from "./BottomRow";
 
@@ -8,20 +8,8 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
       const [home_score,setHomeScore] = useState(0);
       const [away_score,setAwayScore] = useState(0);
-       let  [quarter_value,setQuarter] =useEffect(0)
-       useEffect(() => {
-        if (quarter_value > 1) {
-          console.log('Threshold of over 1 reached.');
-        } else {
-          console.log('No threshold reached.');
-        }
-      }, [quarter_value]);
-    //  useEffect(()=>{
-    //    quarter_value = document.querySelectorAll('quarter__value_btn');
-    //  quarter_value.addEventListener('click',()=>{
-    //    return quarter_value +1  
-    //  })
-    //  })
+       const  [quarter__value, setQuarter] =useState(1);
+      
   return (
     <div className="container">
       <section className="scoreboard">
@@ -39,11 +27,11 @@ function App() {
             <div className="away__score">{away_score}</div>
           </div>
         </div>
-        <BottomRow />
+        <BottomRow quarter__value={quarter__value}/>
       </section>
       <section className="buttons">
         <div className='quarter__value_btn_container'>
-          <button onClick={ ()=> setQuarter(quarter_value +1)} className='quarter__value_btn'>Quarter</button>
+          <button onClick={ ()=> setQuarter(quarter__value +1) } className='quarter__value_btn'>Quarter</button>
 
         </div>
         <div className="homeButtons">
@@ -60,4 +48,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
