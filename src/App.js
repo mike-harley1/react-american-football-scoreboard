@@ -31,8 +31,14 @@ function App() {
       </section>
       <section className="buttons">
         <div className='quarter__value_btn_container'>
-          <button onClick={ ()=> setQuarter(quarter__value +1) } className='quarter__value_btn'>Quarter</button>
-
+          <button className='quarter__value_btn' 
+          onClick={()=> {
+            if(quarter__value < 4 ){
+              setQuarter(quarter__value+1)
+            }else{setQuarter("OT")} }
+          }>
+           Quarter 
+        </button>
         </div>
         <div className="homeButtons">
           {/* TODO STEP 4 - Now we need to attach our state setter functions to click listeners. */}
